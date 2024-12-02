@@ -1,0 +1,2 @@
+String appFont = 'SFPro Display';
+
