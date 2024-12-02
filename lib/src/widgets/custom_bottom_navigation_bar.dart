@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:townsquare/src/core/app/medias.dart';
+import 'package:townsquare/src/core/development/console.dart';
 
 import '../../di_injection.dart';
 import '../core/app/colors.dart';
@@ -32,10 +33,14 @@ class CustomBottomNavigationBar extends StatelessWidget {
           // currentIndex: state,
           currentIndex: statefulNavigationShell.currentIndex,
           onTap: (int index) {
+            if (index == 2) return;
             sl.get<NavCubit>().changeCurrentIndex(index);
+
+            int currIndex = index > 2 ? index - 1 : index;
             statefulNavigationShell.goBranch(
-              index,
-              initialLocation: index == statefulNavigationShell.currentIndex,
+              currIndex,
+              initialLocation:
+                  (currIndex) == statefulNavigationShell.currentIndex,
             );
           },
           items: [
@@ -48,6 +53,12 @@ class CustomBottomNavigationBar extends StatelessWidget {
               "",
               kMapLightIconSvg,
               kMapLightIconSvg,
+            ),
+            customBottomItem(
+              "",
+              kPlusLightIconSvg,
+              kPlusLightIconSvg,
+              isCreate: true,
             ),
             customBottomItem(
               "",
@@ -72,13 +83,15 @@ class CustomBottomNavigationBar extends StatelessWidget {
     String? imageUrl,
     String? imageText,
     bool? isProfile,
+    bool? isCreate,
   }) {
     return BottomNavigationBarItem(
       label: label,
       activeIcon: BlocBuilder<NavCubit, int>(
         builder: (context, state) {
+          console("data: $state");
           return Padding(
-            padding: const EdgeInsets.only(bottom: 4),
+            padding: const EdgeInsets.only(top: 16),
             child: SvgPicture.asset(
               activeIcon,
             ),
@@ -86,13 +99,15 @@ class CustomBottomNavigationBar extends StatelessWidget {
         },
       ),
       icon: Padding(
-        padding: const EdgeInsets.only(bottom: 4),
+        padding: const EdgeInsets.only(top: 16),
         child: SvgPicture.asset(
           icon,
-          colorFilter: ColorFilter.mode(
-            AppColor.kNeutral500,
-            BlendMode.srcIn,
-          ),
+          colorFilter: isCreate == true
+              ? null
+              : ColorFilter.mode(
+                  AppColor.kNeutral500,
+                  BlendMode.srcIn,
+                ),
         ),
       ),
     );

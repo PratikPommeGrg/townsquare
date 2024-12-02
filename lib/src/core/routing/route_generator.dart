@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:townsquare/src/features/activities/presentation/screens/activities_screen.dart';
+import 'package:townsquare/src/features/communities/presentation/screens/communities_screen.dart';
+import 'package:townsquare/src/features/locations/presentation/screens/locations_screen.dart';
+import 'package:townsquare/src/features/services/presentation/screens/services_screen.dart';
 
+import '../../../di_injection.dart';
 import '../../../go_router_navigation_observer.dart';
+import '../../features/main/presentation/cubit/route_history_cubit.dart';
 import '../../features/main/presentation/screens/main_screen.dart';
 import '../../widgets/custom_text.dart';
 import '../../widgets/custom_transition_page_widget.dart';
@@ -10,8 +16,7 @@ import '../states/states.dart';
 
 class RouteGenerator {
   static final GoRouter goRouter = GoRouter(
-    // initialLocation: RouteConfig.homeScreenRoute,
-    initialLocation: RouteConfig.splashScreenRoute,
+    initialLocation: RouteConfig.activitiesScreenRoute,
     navigatorKey: rootNavigatorKey,
     observers: [
       GoRouterObserver(),
@@ -29,7 +34,7 @@ class RouteGenerator {
               '${state.uri} does not exist',
             ),
             ElevatedButton(
-              onPressed: () => goRouter.go(RouteConfig.splashScreenRoute),
+              onPressed: () => goRouter.go(RouteConfig.activitiesScreenRoute),
               child: CustomText.ourText('Go to main'),
             ),
           ],
@@ -45,15 +50,15 @@ class RouteGenerator {
           StatefulShellBranch(
             routes: <RouteBase>[
               GoRoute(
-                name: RouteConfigName.homeScreenRouteName,
-                path: RouteConfig.homeScreenRoute,
+                name: RouteConfigName.activitiesScreenRouteName,
+                path: RouteConfig.activitiesScreenRoute,
                 pageBuilder: (context, state) {
                   sl
                       .get<RouteHistoryCubit>()
                       .changePreviousRouteName(state.name ?? "");
                   return customTransitionPageWidget(
                     state,
-                    widgetChild: const HomeScreen(),
+                    widgetChild: const ActivitiesScreen(),
                     begin: const Offset(-2, 0),
                     end: const Offset(0, 0),
                   );
@@ -67,21 +72,15 @@ class RouteGenerator {
           StatefulShellBranch(
             routes: <RouteBase>[
               GoRoute(
-                name: RouteConfigName.ordersScreenRouteName,
-                path: RouteConfig.ordersScreenRoute,
+                name: RouteConfigName.locationsScreenRouteName,
+                path: RouteConfig.locationsScreenRoute,
                 pageBuilder: (context, state) {
                   sl
                       .get<RouteHistoryCubit>()
                       .changePreviousRouteName(state.name ?? "");
                   return customTransitionPageWidget(
                     state,
-                    widgetChild: const OrdersScreen(),
-                    // begin: Offset(
-                    //     sl.get<RouteHistoryCubit>().previousRouteName[0] ==
-                    //             RouteConfigName.homeScreenRouteName
-                    //         ? 1
-                    //         : -1,
-                    //     0),
+                    widgetChild: const LocationsScreen(),
                     begin: const Offset(-2, 0),
                     end: const Offset(0, 0),
                   );
@@ -95,18 +94,18 @@ class RouteGenerator {
           StatefulShellBranch(
             routes: <RouteBase>[
               GoRoute(
-                name: RouteConfigName.ledgerScreenRouteName,
-                path: RouteConfig.ledgerScreenRoute,
+                name: RouteConfigName.communitiesScreenRouteName,
+                path: RouteConfig.communitiesScreenRoute,
                 pageBuilder: (context, state) {
                   sl
                       .get<RouteHistoryCubit>()
                       .changePreviousRouteName(state.name ?? "");
                   return customTransitionPageWidget(
                     state,
-                    widgetChild: const LedgerScreen(),
+                    widgetChild: const CommunitiesScreen(),
                     begin: Offset(
                         sl.get<RouteHistoryCubit>().previousRouteName[0] ==
-                                RouteConfigName.profileScreenRouteName
+                                RouteConfigName.servicesScreenRouteName
                             ? -1
                             : 1,
                         0),
@@ -122,15 +121,15 @@ class RouteGenerator {
           StatefulShellBranch(
             routes: <RouteBase>[
               GoRoute(
-                name: RouteConfigName.profileScreenRouteName,
-                path: RouteConfig.profileScreenRoute,
+                name: RouteConfigName.servicesScreenRouteName,
+                path: RouteConfig.servicesScreenRoute,
                 pageBuilder: (context, state) {
                   sl
                       .get<RouteHistoryCubit>()
                       .changePreviousRouteName(state.name ?? "");
                   return customTransitionPageWidget(
                     state,
-                    widgetChild: const ProfileScreen(),
+                    widgetChild: const ServicesScreen(),
                     begin: const Offset(1, 0),
                     end: const Offset(0, 0),
                   );
@@ -153,8 +152,6 @@ class RouteGenerator {
       //     );
       //   },
       // ),
-
-     
     ],
   );
 }

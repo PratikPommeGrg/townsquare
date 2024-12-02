@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:toastification/toastification.dart';
 import 'package:townsquare/di_injection.dart';
+import 'package:townsquare/src/features/main/presentation/cubit/route_history_cubit.dart';
 
 import 'src/core/app/texts.dart';
 import 'src/core/routing/route_generator.dart';
@@ -17,6 +18,9 @@ class TownSquareApp extends StatelessWidget {
         //Common
         BlocProvider(
           create: (context) => sl.get<NavCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => sl.get<RouteHistoryCubit>(),
         ),
       ],
       child: ToastificationWrapper(
