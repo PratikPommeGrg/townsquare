@@ -4,14 +4,16 @@ const double vBox0 = 8.0;
 const double vBox0andHalf = 10.0;
 const double vBox1 = 14.0;
 const double vBox1andHalf = 16.0;
-const double vBox2 = 24.0;
-const double vBox2andHalf = 32;
-const double vBox3 = 40.0;
-const double vBox4 = 80.0;
+const double vBox2 = 20.0;
+const double vBox2andHalf = 24;
+const double vBox3 = 32.0;
+const double vBox4 = 40.0;
+const double vBox5 = 50.0;
+const double vBox6 = 60.0;
 
 const double hBox0 = 8.0;
 const double hBox0andHalf = 10.0;
-const double hBox1 = 14.0;
+const double hBox1 = 12.0;
 const double hBox1andHalf = 16.0;
 const double hBox2 = 24.0;
 const double hBox3 = 40.0;
@@ -25,6 +27,11 @@ const SizedBox vSizedBox2 = SizedBox(height: vBox2);
 const SizedBox vSizedBox2andHalf = SizedBox(height: vBox2andHalf);
 const SizedBox vSizedBox3 = SizedBox(height: vBox3);
 const SizedBox vSizedBox4 = SizedBox(height: vBox4);
+const SizedBox vSizedBox5 = SizedBox(height: vBox5);
+const SizedBox vSizedBox6 = SizedBox(height: vBox6);
+
+
+
 const SizedBox hSizedBox0 = SizedBox(width: hBox0);
 const SizedBox hSizedBox0andHalf = SizedBox(width: hBox0andHalf);
 const SizedBox hSizedBox1 = SizedBox(width: hBox1);
@@ -50,12 +57,13 @@ keyboardHeight(BuildContext context) {
 
 //padding for whole screen
 const screenPadding = EdgeInsets.all(16);
-const screenLeftRightPadding = EdgeInsets.symmetric(horizontal: 16);
-const screenTopBottomPadding = EdgeInsets.symmetric(vertical: 16);
+const screenLeftRightPadding = EdgeInsets.symmetric(horizontal: 24);
+const screenTopBottomPadding = EdgeInsets.symmetric(vertical: 24);
 
 // border radius
-const borderRadius = 6.0;
-const borderRadiusandHalf = 12.0;
+const borderRadiusFour = 4.0;
+const borderRadiusSix = 6.0;
+const borderRadiusTen = 10.0;
 const borderRadiusSecond = 16.0;
 const borderRadiusSecondandHalf = 20.0;
 const borderRadiusThird = 24.0;

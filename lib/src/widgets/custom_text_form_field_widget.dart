@@ -92,7 +92,7 @@ class CustomTextFormField extends StatelessWidget {
     this.allowMultipleSpace = true,
     this.textInputAction,
     this.showBorder = true,
-    this.borderRadius = borderRadiusandHalf,
+    this.borderRadius = borderRadiusTen,
     this.hintTextSize,
     this.hintTextWeight,
     this.enteredTextSize,

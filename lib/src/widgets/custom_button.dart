@@ -65,7 +65,7 @@ class CustomButton {
     Color? disabledBackgroundColor,
     TextDecoration? decorateText,
     bool isBorder = false,
-    double borderRadius = borderRadiusMax,
+    double borderRadius = borderRadiusFour,
   }) {
     return SizedBox(
       width: width,
@@ -77,7 +77,7 @@ class CustomButton {
           padding: padding ??
               const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
           backgroundColor:
-              isBorder ? Colors.transparent : color ?? AppColor.kPrimary600,
+              isBorder ? Colors.transparent : color ?? AppColor.kBlack,
           disabledBackgroundColor:
               disabledBackgroundColor ?? AppColor.kNeutral300,
           disabledForegroundColor: AppColor.kNeutral200,
@@ -202,7 +202,7 @@ class CustomButton {
       bool? autofocus,
       Clip? clipBehavior,
       Color? backGroundColour,
-      MaterialStatesController? statesController,
+      WidgetStatesController? statesController,
       double? width,
       double? borderRadius,
       required Widget icon,
@@ -236,7 +236,7 @@ class CustomButton {
     FocusNode? focusNode,
     bool? autofocus,
     Clip? clipBehavior,
-    MaterialStatesController? statesController,
+    WidgetStatesController? statesController,
     required Widget icon,
     required Widget label,
     double borderRadius = borderRadiusMax,

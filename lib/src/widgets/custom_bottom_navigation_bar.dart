@@ -19,9 +19,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<NavCubit, int>(
       builder: (context, state) {
+        console(" state: $state");
         return BottomNavigationBar(
           backgroundColor: Colors.white,
-          elevation: 2,
+          elevation: 5,
           type: BottomNavigationBarType.fixed,
           selectedItemColor: AppColor.kPrimary600,
           unselectedItemColor: AppColor.kNeutral500,
@@ -30,17 +31,18 @@ class CustomBottomNavigationBar extends StatelessWidget {
           selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500),
           unselectedFontSize:
               Theme.of(context).textTheme.bodySmall?.fontSize ?? 12,
-          // currentIndex: state,
-          currentIndex: statefulNavigationShell.currentIndex,
+          currentIndex: statefulNavigationShell.currentIndex >= 2
+              ? statefulNavigationShell.currentIndex + 1
+              : statefulNavigationShell.currentIndex,
           onTap: (int index) {
             if (index == 2) return;
-            sl.get<NavCubit>().changeCurrentIndex(index);
 
-            int currIndex = index > 2 ? index - 1 : index;
+            sl.get<NavCubit>().changeCurrentIndex(index);
+            int customIndexForNav = index >= 3 ? index - 1 : index;
+
             statefulNavigationShell.goBranch(
-              currIndex,
-              initialLocation:
-                  (currIndex) == statefulNavigationShell.currentIndex,
+              customIndexForNav,
+              initialLocation: (index) == statefulNavigationShell.currentIndex,
             );
           },
           items: [
@@ -89,7 +91,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
       label: label,
       activeIcon: BlocBuilder<NavCubit, int>(
         builder: (context, state) {
-          console("data: $state");
           return Padding(
             padding: const EdgeInsets.only(top: 16),
             child: SvgPicture.asset(

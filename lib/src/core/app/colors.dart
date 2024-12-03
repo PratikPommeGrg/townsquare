@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppColor {
+
+
+
   //primary
   static Color kPrimary600 = const Color(0xff35BAF8);
   static Color kPrimary500 = const Color(0xff4FC7FF);
@@ -46,4 +49,6 @@ class AppColor {
  static Color kVeryHighIntensityTagColor = const Color(0xffFFE0E4);
  static Color kWorkSpaceTagColor = const Color(0xff989AEA);
  static Color kChildCareTagColor = const Color(0xffD8F7DF);
+
+
 }

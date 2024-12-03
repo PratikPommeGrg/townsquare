@@ -1,7 +1,7 @@
-part of '../main_screen.dart';
+part of '../../main_screen.dart';
 
-class MainBody extends StatelessWidget {
-  const MainBody({super.key, required this.statefulNavigationShell});
+class MainBodyMobile extends StatelessWidget {
+  const MainBodyMobile({super.key, required this.statefulNavigationShell});
 
   final StatefulNavigationShell statefulNavigationShell;
 
