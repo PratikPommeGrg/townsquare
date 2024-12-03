@@ -22,20 +22,48 @@ class MainBodyWeb extends StatelessWidget {
                 width: 156,
               ),
               vSizedBox6,
-              _navItem(title: "Activities", icon: kCalendarLightIconSvg),
+              _navItem(
+                title: "Activities",
+                icon: kCalendarLightIconSvg,
+                onTap: () => navigationShell.goBranch(0),
+              ),
               vSizedBox3,
-              _navItem(title: "Locations", icon: kMapLightIconSvg),
+              _navItem(
+                title: "Locations",
+                icon: kMapLightIconSvg,
+                onTap: () => navigationShell.goBranch(1),
+              ),
               vSizedBox3,
-              _navItem(title: "Services", icon: kStarLightIconSvg),
+              _navItem(
+                title: "Services",
+                icon: kStarLightIconSvg,
+                onTap: () => navigationShell.goBranch(3),
+              ),
               vSizedBox3,
-              _navItem(title: "Communities", icon: kUsersLightIconSvg),
+              _navItem(
+                title: "Communities",
+                icon: kUsersLightIconSvg,
+                onTap: () => navigationShell.goBranch(2),
+              ),
               vSizedBox3,
-              _navItem(title: "Notifications", icon: kBellIconSvg),
+              _navItem(
+                title: "Notifications",
+                icon: kBellIconSvg,
+                onTap: () {},
+              ),
               vSizedBox3,
               CustomButton.elevatedButtonWithIcon(
                 onPressed: () {},
-                icon: const Icon(CupertinoIcons.add),
-                label: CustomText.ourText("Create"),
+                icon: const Icon(
+                  CupertinoIcons.add,
+                  color: Colors.black,
+                ),
+                label: CustomText.ourText(
+                  "Create",
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                ),
+                backGroundColour: AppColor.kPrimary600,
               ),
               vSizedBox3,
               Row(
@@ -63,17 +91,6 @@ class MainBodyWeb extends StatelessWidget {
         Expanded(
           child: navigationShell,
         ),
-        hSizedBox1andHalf,
-        Container(
-          color: AppColor.kNeutral100,
-          width: 305,
-          child: Column(
-            children: [
-              vSizedBox6,
-              goalProgressBannerWidget(),
-            ],
-          ),
-        ),
       ],
     );
   }
@@ -82,25 +99,32 @@ class MainBodyWeb extends StatelessWidget {
 Widget _navItem({
   required String title,
   required String icon,
+  required void Function()? onTap,
 }) {
-  return Row(
-    children: [
-      SvgPicture.asset(
-        icon,
-        colorFilter: const ColorFilter.mode(
-          Colors.white,
-          BlendMode.srcIn,
-        ),
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      color: Colors.transparent,
+      child: Row(
+        children: [
+          SvgPicture.asset(
+            icon,
+            colorFilter: const ColorFilter.mode(
+              Colors.white,
+              BlendMode.srcIn,
+            ),
+          ),
+          hSizedBox3,
+          Expanded(
+            child: CustomText.ourText(
+              title,
+              fontSize: 18,
+              fontWeight: FontWeight.w400,
+              color: AppColor.kWhite,
+            ),
+          ),
+        ],
       ),
-      hSizedBox3,
-      Expanded(
-        child: CustomText.ourText(
-          title,
-          fontSize: 20,
-          fontWeight: FontWeight.w500,
-          color: AppColor.kWhite,
-        ),
-      ),
-    ],
+    ),
   );
 }

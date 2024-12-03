@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AppColor {
-
-
-
   //primary
   static Color kPrimary600 = const Color(0xff35BAF8);
   static Color kPrimary500 = const Color(0xff4FC7FF);
@@ -33,7 +30,7 @@ class AppColor {
   static Color kNeutral800 = const Color(0xff1E293B);
   static Color kNeutral700 = const Color(0xff334155);
   static Color kNeutral600 = const Color(0xff475569);
-  static Color kNeutral500 = const Color(0xff64748B);
+  static Color kNeutral500 = const Color(0xffADB5BD);
   static Color kNeutral400 = const Color(0xff94A3BB);
   static Color kNeutral300 = const Color(0xffCBD5E1);
   static Color kNeutral200 = const Color(0xffE2E8F0);
@@ -42,13 +39,11 @@ class AppColor {
   static Color kWhite = const Color(0xFFFFFFFF);
   static Color kBlack = const Color(0xff000000);
 
- // tags
- static Color kLigthIntensityTagColor = const Color(0xffD5F1FF);
- static Color kMediumIntensityTagColor = const Color(0xffF3E8FF);
- static Color kHighIntensityTagColor = const Color(0xffFFEAD1);
- static Color kVeryHighIntensityTagColor = const Color(0xffFFE0E4);
- static Color kWorkSpaceTagColor = const Color(0xff989AEA);
- static Color kChildCareTagColor = const Color(0xffD8F7DF);
-
-
+  // tags
+  static Color kLigthIntensityTagColor = const Color(0xffD5F1FF);
+  static Color kMediumIntensityTagColor = const Color(0xffF3E8FF);
+  static Color kHighIntensityTagColor = const Color(0xffFFEAD1);
+  static Color kVeryHighIntensityTagColor = const Color(0xffFFE0E4);
+  static Color kWorkSpaceTagColor = const Color(0xff989AEA);
+  static Color kChildCareTagColor = const Color(0xffD8F7DF);
 }

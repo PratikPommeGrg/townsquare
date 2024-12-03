@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:townsquare/src/helper/common_helper.dart';
 
 import '../core/app/colors.dart';
 import '../core/app/dimensions.dart';
@@ -36,7 +37,7 @@ class CustomTagContainer extends StatelessWidget {
             ],
             CustomText.ourText(
               text ?? "",
-              fontSize: 10,
+              fontSize: isWeb ? 12 : 10,
               fontWeight: FontWeight.w500,
               color: textColor ?? AppColor.kNeutral500,
             ),

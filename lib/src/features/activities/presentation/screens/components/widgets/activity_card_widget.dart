@@ -2,7 +2,8 @@ part of '../../activities_screen.dart';
 
 Widget activityCardWidget({required MockActivitiesModel mockActivities}) {
   return CustomShadowContainer(
-    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+    padding:
+        const EdgeInsets.symmetric(vertical: 12, horizontal: kIsWeb ? 32 : 16),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -17,7 +18,7 @@ Widget activityCardWidget({required MockActivitiesModel mockActivities}) {
                   style: TextStyle(
                     color: AppColor.kBlack,
                     fontWeight: FontWeight.w500,
-                    fontSize: 12,
+                    fontSize: isWeb ? 14 : 12,
                   ),
                   children: [
                     TextSpan(
@@ -31,7 +32,7 @@ Widget activityCardWidget({required MockActivitiesModel mockActivities}) {
               vSizedBox0,
               CustomText.ourText(
                 mockActivities.title,
-                fontSize: 14,
+                fontSize: isWeb ? 20 : 14,
                 fontWeight: FontWeight.w700,
                 color: AppColor.kBlack,
               ),
@@ -42,7 +43,7 @@ Widget activityCardWidget({required MockActivitiesModel mockActivities}) {
                   hSizedBox0,
                   CustomText.ourText(
                     mockActivities.location,
-                    fontSize: 12,
+                    fontSize: isWeb ? 14 : 12,
                     fontWeight: FontWeight.w500,
                     color: AppColor.kNeutral500,
                   ),
@@ -69,17 +70,21 @@ Widget activityCardWidget({required MockActivitiesModel mockActivities}) {
           children: [
             CustomText.ourText(
               mockActivities.price == 0 ? "Free" : "${mockActivities.price}€",
-              fontSize: 14,
+              fontSize: isWeb ? 20 : 14,
               fontWeight: FontWeight.w700,
               color: AppColor.kBlack,
             ),
             vSizedBox1andHalf,
             CustomButton.elevatedButton(
-              "Join",
+              mockActivities.spot < 1 ? "Sold Out" : "Join",
               () {},
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               borderRadius: borderRadiusSix,
-            )
+              color: mockActivities.spot == 0
+                  ? AppColor.kNeutral500
+                  : AppColor.kBlack,
+              isDisable: mockActivities.spot == 0,
+            ),
           ],
         ),
       ],

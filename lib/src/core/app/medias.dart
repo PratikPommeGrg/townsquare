@@ -1,5 +1,6 @@
 //svg data here...
 const baseSVGPath = 'assets/svg/';
+const baseImagePath = 'assets/svg/';
 
 // svgs (light mode)
 final kAppLogoIconSvg = _getSvgBasePath('app_logo.svg');
@@ -21,7 +22,14 @@ final kStarDarkIconSvg = _getSvgBasePath('star_dark_mode.svg');
 final kUsersDarkIconSvg = _getSvgBasePath('users_dark_mode.svg');
 final kPlusDarkIconSvg = _getSvgBasePath('plus_dark_mode.svg');
 
+//images
+final kBgImage = _getImagesBasePath('bg.jpeg');
+
 //svg function here...
 String _getSvgBasePath(String name) {
   return baseSVGPath + name;
+}
+
+String _getImagesBasePath(String name) {
+  return baseImagePath + name;
 }

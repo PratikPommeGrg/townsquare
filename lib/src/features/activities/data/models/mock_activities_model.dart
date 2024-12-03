@@ -2,26 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:townsquare/src/core/app/colors.dart';
 import 'package:townsquare/src/core/app/medias.dart';
 
-class MockActivitiesModel {
-  final String title;
-  final String time;
-  final String duration;
-  final String location;
-  final int price;
-  final int spot;
-  final List<MockActivityTag> tags;
-
-  MockActivitiesModel({
-    required this.title,
-    required this.time,
-    required this.duration,
-    required this.price,
-    required this.spot,
-    required this.location,
-    required this.tags,
-  });
-}
-
 class MockActivityTag {
   final String title;
   final String? icon;
@@ -36,6 +16,29 @@ class MockActivityTag {
   });
 }
 
+class MockActivitiesModel {
+  final String title;
+  final String time;
+  final String duration;
+  final String location;
+  final int price;
+  final int spot;
+  final List<MockActivityTag> tags;
+  final List<String> categories; // Add categories field
+
+  MockActivitiesModel({
+    required this.title,
+    required this.time,
+    required this.duration,
+    required this.price,
+    required this.spot,
+    required this.location,
+    required this.tags,
+    required this.categories, // Include it in the constructor
+  });
+}
+
+// Updated Mock Data
 List<MockActivitiesModel> mockActivities = [
   MockActivitiesModel(
     title: "Beach Yoga",
@@ -57,6 +60,7 @@ List<MockActivitiesModel> mockActivities = [
         backgroundColor: AppColor.kLigthIntensityTagColor,
       ),
     ],
+    categories: ["Calm", "Creative"], // Add corresponding categories
   ),
   MockActivitiesModel(
     title: "Reformer Pilates",
@@ -83,6 +87,7 @@ List<MockActivitiesModel> mockActivities = [
         backgroundColor: AppColor.kChildCareTagColor,
       ),
     ],
+    categories: ["All", "Sports"], // Add corresponding categories
   ),
   MockActivitiesModel(
     title: "5-a-side Football",
@@ -109,6 +114,7 @@ List<MockActivitiesModel> mockActivities = [
         backgroundColor: AppColor.kChildCareTagColor,
       ),
     ],
+    categories: ["Sports", "Popular"], // Add corresponding categories
   ),
   MockActivitiesModel(
     title: "Standing Tapas Lunch",
@@ -124,6 +130,7 @@ List<MockActivitiesModel> mockActivities = [
         backgroundColor: AppColor.kNeutral200,
       ),
     ],
+    categories: ["Food", "Calm"], // Add corresponding categories
   ),
   MockActivitiesModel(
     title: "Kids LEGO Club",
@@ -149,6 +156,7 @@ List<MockActivitiesModel> mockActivities = [
         backgroundColor: AppColor.kWorkSpaceTagColor,
       ),
     ],
+    categories: ["Kids", "Creative"], // Add corresponding categories
   ),
   MockActivitiesModel(
     title: "5-a-side Football",
@@ -174,5 +182,6 @@ List<MockActivitiesModel> mockActivities = [
         backgroundColor: AppColor.kChildCareTagColor,
       ),
     ],
+    categories: ["Sports", "Popular"], // Add corresponding categories
   ),
 ];

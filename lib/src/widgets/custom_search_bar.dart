@@ -22,6 +22,8 @@ class CustomSearchBar extends StatelessWidget {
           fontFamily: appFont,
         ),
       ),
+      overlayColor: const WidgetStatePropertyAll(Colors.white),
+      surfaceTintColor: WidgetStateProperty.all(Colors.white),
       backgroundColor: WidgetStateProperty.all(Colors.transparent),
       shadowColor: const WidgetStatePropertyAll(Colors.transparent),
       trailing: [
