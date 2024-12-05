@@ -1,47 +1,62 @@
-# townsquare
 
-TownSquare
+# TownSquare
 
 This project is built with Flutter and supports both mobile and web platforms.
 
-Getting Started
+## Getting Started
 
-1. Clone the Repository
-   Clone the repository to your local machine:
+### 1. Clone the Repository
+Clone the repository to your local machine:
+```bash
+git clone <repository-url>
+```
 
-2. Install FVM
-   This project uses FVM 3.24.3 to manage the Flutter version.
+### 2. Install FVM
+This project uses **FVM 3.24.3** to manage the Flutter version.
 
-    If FVM is not installed, visit: https://fvm.app/documentation/getting-started/installation
-    After installing FVM, run:
-    fvm install 3.24.3
-    fvm use 3.24.3
-    Clean and Fetch Dependencies
-    Run the following commands:
-    fvm flutter clean && fvm flutter pub get
+- If FVM is not installed, visit: [FVM Installation Guide](https://fvm.app/documentation/getting-started/installation)
+- After installing FVM, run:
+  ```bash
+  fvm install 3.24.3
+  fvm use 3.24.3
+  ```
 
-3. Running the App
-    For Mobile (Android/iOS):
+### 3. Clean and Fetch Dependencies
+Run the following commands:
+```bash
+fvm flutter clean && fvm flutter pub get
+```
 
-    Comment out those two lines in main.dart:
-    // import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-    // setUrlStrategy(PathUrlStrategy());
-    
-    Run the app using:
-    fvm flutter run
+### 4. Running the App
 
+#### For Mobile (Android/iOS):
+1. Comment out the following two lines in `main.dart`:
+   ```dart
+   // import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+   // setUrlStrategy(PathUrlStrategy());
+   ```
+2. Run the app using:
+   ```bash
+   fvm flutter run
+   ```
 
-4. For Web:
+#### For Web:
+1. Uncomment the web plugin import in `main.dart`:
+   ```dart
+   import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+   ```
+2. To remove the default hash URL (`#`), uncomment the line below:
+   ```dart
+   setUrlStrategy(PathUrlStrategy());
+   ```
+3. Run the app using:
+   ```bash
+   fvm flutter run -d chrome
+   ```
 
-    Uncomment the web plugin import in main.dart:
-    import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-    To remove the default hashUrl (#) uncomment line below too:
-    setUrlStrategy(PathUrlStrategy());
+---
 
-    Run the app using:
-    fvm flutter run -d chrome
+## Notes
 
-Notes:
-
-    Ensure the correct Flutter environment is set up before running the app.
-    Follow the steps based on the platform you intend to build for (Mobile or Web).
+- Ensure the correct Flutter environment is set up before running the app.
+- Follow the steps based on the platform you intend to build for (Mobile or Web).
