@@ -8,7 +8,7 @@ This project is built with Flutter and supports both mobile and web platforms.
 ### 1. Clone the Repository
 Clone the repository to your local machine:
 ```bash
-git clone <repository-url>
+git clone https://github.com/PratikPommeGrg/townsquare.git
 ```
 
 ### 2. Install FVM
