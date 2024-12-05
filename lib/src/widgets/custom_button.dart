@@ -65,37 +65,39 @@ class CustomButton {
     Color? disabledBackgroundColor,
     TextDecoration? decorateText,
     bool isBorder = false,
-    double borderRadius = borderRadiusFour,
+    double borderRadius = borderRadiusMax,
   }) {
     return SizedBox(
       width: width,
       height: height,
       child: ElevatedButton(
-        style: ButtonStyle(
-          elevation: WidgetStatePropertyAll(elevation ?? 0.0),
-          backgroundColor: WidgetStateProperty.resolveWith((states) {
-            if (isDisable) null;
-            if (states.contains(WidgetState.hovered)) {
-              return AppColor.kNeutral100; // Background color when hovered
-            }
-            return color ?? AppColor.kBlack; // Default background color
-          }),
-          foregroundColor: WidgetStateProperty.all(titleColor ?? Colors.white),
-          padding: WidgetStateProperty.all(padding ??
-              const EdgeInsets.symmetric(vertical: 10, horizontal: 16)),
-          shape: WidgetStateProperty.all(
-            RoundedRectangleBorder(
-              side: isBorder == true
-                  ? BorderSide(
-                      color: isDisable
-                          ? AppColor.kNeutral400
-                          : borderColor ?? AppColor.kPrimary600,
-                      width: 2,
-                    )
-                  : BorderSide.none,
-              borderRadius: BorderRadius.circular(borderRadius),
-            ),
+        style: ElevatedButton.styleFrom(
+          foregroundColor: color,
+          padding: padding ??
+              const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+          backgroundColor:
+              isBorder ? Colors.transparent : color ?? AppColor.kBlack,
+          disabledBackgroundColor:
+              disabledBackgroundColor ?? AppColor.kNeutral300,
+          disabledForegroundColor: AppColor.kNeutral200,
+          shape: RoundedRectangleBorder(
+            side: isBorder == true
+                ? BorderSide(
+                    color: isDisable
+                        ? AppColor.kNeutral400
+                        : borderColor ?? AppColor.kPrimary600,
+                    width: 2,
+                  )
+                : BorderSide.none,
+            borderRadius: BorderRadius.circular(borderRadiusFour),
           ),
+        ).copyWith(
+          elevation: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.hovered)) {
+              return 0.0; // Remove elevation when hovered
+            }
+            return elevation ?? 0.0; // Default elevation
+          }),
         ),
         onPressed: isDisable ? null : onPressed,
         child: Center(
@@ -103,14 +105,24 @@ class CustomButton {
               ? FittedBox(
                   child: CustomText.ourText(title,
                       fontSize: fontSize ?? 16,
-                      fontWeight: fontWeight ?? FontWeight.w500,
-                      color: titleColor ?? Colors.white,
+                      fontWeight: isBorder
+                          ? FontWeight.w500
+                          : fontWeight ?? FontWeight.w500,
+                      color: isBorder
+                          ? isDisable
+                              ? AppColor.kNeutral400
+                              : titleColor ?? AppColor.kPrimary600
+                          : titleColor ?? Colors.white,
                       textDecoration: decorateText ?? TextDecoration.none),
                 )
               : CustomText.ourText(title,
                   fontSize: fontSize ?? 16,
-                  fontWeight: fontWeight ?? FontWeight.w500,
-                  color: titleColor ?? Colors.white,
+                  fontWeight: isBorder
+                      ? FontWeight.w500
+                      : fontWeight ?? FontWeight.w500,
+                  color: isBorder
+                      ? titleColor ?? Colors.black
+                      : titleColor ?? Colors.white,
                   textDecoration: decorateText ?? TextDecoration.none),
         ),
       ),

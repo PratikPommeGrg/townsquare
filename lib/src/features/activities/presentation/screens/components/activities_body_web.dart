@@ -1,7 +1,15 @@
 part of '../activities_screen.dart';
 
-class ActivitiesBodyWeb extends StatelessWidget {
+class ActivitiesBodyWeb extends StatefulWidget {
   const ActivitiesBodyWeb({super.key});
+
+  @override
+  State<ActivitiesBodyWeb> createState() => _ActivitiesBodyWebState();
+}
+
+class _ActivitiesBodyWebState extends State<ActivitiesBodyWeb> {
+  // final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
 
   @override
   Widget build(BuildContext context) {
@@ -96,24 +104,55 @@ class ActivitiesBodyWeb extends StatelessWidget {
                                     ),
                                   ),
                                   vSizedBox2andHalf,
-                                  ListView.separated(
-                                    physics:
-                                        const NeverScrollableScrollPhysics(),
-                                    shrinkWrap: true,
-                                    separatorBuilder: (context, index) =>
-                                        vSizedBox1andHalf,
-                                    itemCount: activitiesFilterList[1] ==
-                                            selectedFilter.value
-                                        ? mockActivities.length
-                                        : mockFilterActivities.value.length,
-                                    itemBuilder: (context, index) {
-                                      return activityCardWidget(
-                                        mockActivities:
-                                            activitiesFilterList[1] ==
-                                                    selectedFilter.value
-                                                ? mockActivities[index]
-                                                : mockFilterActivities
-                                                    .value[index],
+                                  ValueListenableBuilder<
+                                      List<MockActivitiesModel>>(
+                                    valueListenable: mockFilterActivities,
+                                    builder: (context, activities, child) {
+                                      console(
+                                          "Activity list rebuilt. Filtered activities: ${activities.length}");
+                                      return ListView.separated(
+                                        shrinkWrap: true,
+                                        itemCount: activities.length,
+                                        separatorBuilder: (context, index) =>
+                                            vSizedBox1andHalf,
+                                        itemBuilder: (context, index) {
+                                          return FutureBuilder(
+                                            future: Future.delayed(Duration(
+                                                milliseconds: index *
+                                                    100)), // Staggered delay
+                                            builder: (context, snapshot) {
+                                              if (snapshot.connectionState ==
+                                                  ConnectionState.waiting) {
+                                                return const SizedBox
+                                                    .shrink(); // Don't show anything while waiting
+                                              }
+                                              return TweenAnimationBuilder(
+                                                duration: const Duration(
+                                                    milliseconds:
+                                                        200), // Animation duration
+                                                tween: Tween<double>(
+                                                    begin: 0, end: 1),
+                                                builder:
+                                                    (context, value, child) {
+                                                  return Opacity(
+                                                    opacity: value,
+                                                    child: Transform.translate(
+                                                      offset: Offset(
+                                                          0,
+                                                          50 *
+                                                              (1 -
+                                                                  value)), // Slide up
+                                                      child: activityCardWidget(
+                                                        mockActivities:
+                                                            activities[index],
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+                                            },
+                                          );
+                                        },
                                       );
                                     },
                                   ),

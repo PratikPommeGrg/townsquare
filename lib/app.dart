@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:toastification/toastification.dart';
 import 'package:townsquare/di_injection.dart';
 import 'package:townsquare/src/features/main/presentation/cubit/route_history_cubit.dart';
 
@@ -24,16 +23,14 @@ class TownSquareApp extends StatelessWidget {
           create: (context) => sl.get<RouteHistoryCubit>(),
         ),
       ],
-      child: ToastificationWrapper(
-        child: MaterialApp.router(
-          title: appNameText,
-          debugShowCheckedModeBanner: false,
-          supportedLocales: const [
-            Locale('en', 'US'),
-          ],
-          theme: lightTheme,
-          routerConfig: RouteGenerator.goRouter,
-        ),
+      child: MaterialApp.router(
+        title: appNameText,
+        debugShowCheckedModeBanner: false,
+        supportedLocales: const [
+          Locale('en', 'US'),
+        ],
+        theme: lightTheme,
+        routerConfig: RouteGenerator.goRouter,
       ),
     );
   }

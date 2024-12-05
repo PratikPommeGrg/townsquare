@@ -35,8 +35,10 @@ class CustomShadowContainer extends StatelessWidget {
       width: takeFullWidth == true ? appWidth(context) : width,
       decoration: BoxDecoration(
         image: bgImage != null
-            ? const DecorationImage(
-                image: AssetImage("assets/images/bg.jpeg"), fit: BoxFit.cover)
+            ? DecorationImage(
+                image: AssetImage(bgImage ?? ''),
+                fit: BoxFit.cover,
+              )
             : null,
         color: bgColor ?? AppColor.kWhite,
         borderRadius: BorderRadius.circular(borderRadius ?? borderRadiusTen),

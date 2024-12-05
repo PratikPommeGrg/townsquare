@@ -22,5 +22,5 @@ List<String> activitiesFilterList = [
 ];
 
 ValueNotifier<List<MockActivitiesModel>> mockFilterActivities =
-    ValueNotifier<List<MockActivitiesModel>>([]);
+    ValueNotifier<List<MockActivitiesModel>>(List.from(mockActivities));
 ValueNotifier<String> selectedFilter = ValueNotifier<String>("All");

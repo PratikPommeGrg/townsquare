@@ -1,10 +1,15 @@
 part of '../../main_screen.dart';
 
-class MainBodyWeb extends StatelessWidget {
+class MainBodyWeb extends StatefulWidget {
   final StatefulNavigationShell navigationShell;
 
   const MainBodyWeb({super.key, required this.navigationShell});
 
+  @override
+  State<MainBodyWeb> createState() => _MainBodyWebState();
+}
+
+class _MainBodyWebState extends State<MainBodyWeb> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -25,25 +30,25 @@ class MainBodyWeb extends StatelessWidget {
               _navItem(
                 title: "Activities",
                 icon: kCalendarLightIconSvg,
-                onTap: () => navigationShell.goBranch(0),
+                onTap: () => widget.navigationShell.goBranch(0),
               ),
               vSizedBox3,
               _navItem(
                 title: "Locations",
                 icon: kMapLightIconSvg,
-                onTap: () => navigationShell.goBranch(1),
+                onTap: () => widget.navigationShell.goBranch(1),
               ),
               vSizedBox3,
               _navItem(
                 title: "Services",
                 icon: kStarLightIconSvg,
-                onTap: () => navigationShell.goBranch(3),
+                onTap: () => widget.navigationShell.goBranch(3),
               ),
               vSizedBox3,
               _navItem(
                 title: "Communities",
                 icon: kUsersLightIconSvg,
-                onTap: () => navigationShell.goBranch(2),
+                onTap: () => widget.navigationShell.goBranch(2),
               ),
               vSizedBox3,
               _navItem(
@@ -89,7 +94,7 @@ class MainBodyWeb extends StatelessWidget {
         ),
         // Main Content
         Expanded(
-          child: navigationShell,
+          child: widget.navigationShell,
         ),
       ],
     );
@@ -101,29 +106,32 @@ Widget _navItem({
   required String icon,
   required void Function()? onTap,
 }) {
-  return GestureDetector(
-    onTap: onTap,
-    child: Container(
-      color: Colors.transparent,
-      child: Row(
-        children: [
-          SvgPicture.asset(
-            icon,
-            colorFilter: const ColorFilter.mode(
-              Colors.white,
-              BlendMode.srcIn,
+  return MouseRegion(
+    cursor: SystemMouseCursors.click,
+    child: GestureDetector(
+      onTap: onTap,
+      child: Container(
+        color: Colors.transparent,
+        child: Row(
+          children: [
+            SvgPicture.asset(
+              icon,
+              colorFilter: const ColorFilter.mode(
+                Colors.white,
+                BlendMode.srcIn,
+              ),
             ),
-          ),
-          hSizedBox3,
-          Expanded(
-            child: CustomText.ourText(
-              title,
-              fontSize: 18,
-              fontWeight: FontWeight.w400,
-              color: AppColor.kWhite,
+            hSizedBox3,
+            Expanded(
+              child: CustomText.ourText(
+                title,
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+                color: AppColor.kWhite,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     ),
   );

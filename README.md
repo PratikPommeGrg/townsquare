@@ -1,16 +1,47 @@
 # townsquare
 
-A new Flutter project.
+TownSquare
 
-## Getting Started
+This project is built with Flutter and supports both mobile and web platforms.
 
-This project is a starting point for a Flutter application.
+Getting Started
 
-A few resources to get you started if this is your first Flutter project:
+1. Clone the Repository
+   Clone the repository to your local machine:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+2. Install FVM
+   This project uses FVM 3.24.3 to manage the Flutter version.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    If FVM is not installed, visit: https://fvm.app/documentation/getting-started/installation
+    After installing FVM, run:
+    fvm install 3.24.3
+    fvm use 3.24.3
+    Clean and Fetch Dependencies
+    Run the following commands:
+    fvm flutter clean && fvm flutter pub get
+
+3. Running the App
+    For Mobile (Android/iOS):
+
+    Comment out those two lines in main.dart:
+    // import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+    // setUrlStrategy(PathUrlStrategy());
+    
+    Run the app using:
+    fvm flutter run
+
+
+4. For Web:
+
+    Uncomment the web plugin import in main.dart:
+    import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+    To remove the default hashUrl (#) uncomment line below too:
+    setUrlStrategy(PathUrlStrategy());
+
+    Run the app using:
+    fvm flutter run -d chrome
+
+Notes:
+
+    Ensure the correct Flutter environment is set up before running the app.
+    Follow the steps based on the platform you intend to build for (Mobile or Web).
