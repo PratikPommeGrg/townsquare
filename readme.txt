@@ -1,9 +1,3 @@
-TownSquare
-
-This project is built with Flutter and supports both mobile and web platforms.
-
-For this project, I focused on creating a well-structured and maintainable app by using clean architecture. To manage state effectively, I went with BLoC, as it provides a predictable flow and makes the app easier to test and debug. For dependency injection, I used GetIt, which keeps the code modular and neat, making it easy to work with as the app grows. Navigation was handled with GoRouter because it not only simplifies the navigation logic but also supports web URLs, which is a big plus for a seamless experience across mobile and web. Overall, my goal was to ensure the app is scalable, easy to work on, and delivers a consistent experience across all platforms.
-
 How to Run the Project
 
 Prerequisites:
