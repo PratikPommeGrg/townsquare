@@ -70,23 +70,110 @@ class _ActivitiesBodyMobileState extends State<ActivitiesBodyMobile> {
             vSizedBox2,
             filterSectionWidget(context: context),
             vSizedBox2andHalf,
-            ValueListenableBuilder<List<MockActivitiesModel>>(
-              valueListenable: mockFilterActivities,
-              builder: (context, activities, child) {
-                console(
-                    "Activity list rebuilt. Filtered activities: ${activities.length}");
-                return ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: activities.length,
-                  separatorBuilder: (context, index) => vSizedBox1andHalf,
-                  itemBuilder: (context, index) {
-                    return activityCardWidget(
-                      mockActivities: activities[index],
-                    );
+            ValueListenableBuilder(
+              valueListenable: isLoading,
+              builder: (context, value, child) => ValueListenableBuilder(
+                valueListenable: isFailure,
+                builder: (context, failureValue, child) =>
+                    ValueListenableBuilder<List<MockActivitiesModel>>(
+                  valueListenable: mockFilterActivities,
+                  builder: (context, activities, child) {
+                    return failureValue
+                        ? CustomErrorWidget(
+                            error: "Something went wrong",
+                            showAction: true,
+                          )
+                        : Skeletonizer(
+                            enabled: value,
+                            child: activities.isEmpty && value == false
+                                ? const CustomNotFoundWidget(
+                                    desc: "No activities found",
+                                  )
+                                : ListView.separated(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemCount: 1,
+                                    separatorBuilder: (context, index) =>
+                                        vSizedBox1,
+                                    itemBuilder: (context, index) {
+                                      return Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Column(
+                                            children: [
+                                              CircleAvatar(
+                                                radius: 6,
+                                                backgroundColor: AppColor
+                                                    .kSecondaryYellow300,
+                                              ),
+                                              verticalDashedLinePainterWidget(
+                                                context,
+                                                height: appHeight(context),
+                                              ),
+                                              vSizedBox2andHalf,
+                                            ],
+                                          ),
+                                          hSizedBox1andHalf,
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                RichText(
+                                                  text: TextSpan(
+                                                    text: "Today",
+                                                    style: TextStyle(
+                                                        fontFamily: appFont,
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: AppColor.kBlack),
+                                                    children: [
+                                                      TextSpan(
+                                                          text: " / tuesday",
+                                                          style: TextStyle(
+                                                            color: AppColor
+                                                                .kNeutral500,
+                                                            fontSize: 12,
+                                                          )),
+                                                    ],
+                                                  ),
+                                                ),
+                                                vSizedBox0andHalf,
+                                                ListView.separated(
+                                                  shrinkWrap: true,
+                                                  physics:
+                                                      const NeverScrollableScrollPhysics(),
+                                                  separatorBuilder:
+                                                      (context, index) {
+                                                    return vSizedBox1andHalf;
+                                                  },
+                                                  itemCount: value
+                                                      ? mockActivities.length
+                                                      : activities.length,
+                                                  itemBuilder:
+                                                      (context, index) =>
+                                                          activityCardWidget(
+                                                    mockActivities: value
+                                                        ? mockActivities[index]
+                                                        : activities[index],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  ),
+                          );
                   },
-                );
-              },
+                ),
+              ),
             ),
             vSizedBox1andHalf,
           ],

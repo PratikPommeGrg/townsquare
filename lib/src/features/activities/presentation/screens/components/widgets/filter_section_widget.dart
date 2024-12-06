@@ -19,8 +19,16 @@ Widget filterSectionWidget({required BuildContext context}) {
             child: GestureDetector(
               onTap: () {
                 if (index == 0) return;
+                isFailure.value = false;
 
                 selectedFilter.value = activitiesFilterList[index];
+                isLoading.value = true;
+                Future.delayed(const Duration(milliseconds: 700)).then((_) {
+                  isLoading.value = false;
+                  if (index == activitiesFilterList.length - 2) {
+                    isFailure.value = true;
+                  }
+                });
 
                 if (selectedFilter.value == "All") {
                   mockFilterActivities.value =

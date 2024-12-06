@@ -42,7 +42,7 @@ Widget activityCardWidget({required MockActivitiesModel mockActivities}) {
               vSizedBox0,
               Row(
                 children: [
-                  SvgPicture.asset(kMapPinIconSvg),
+                  Skeleton.replace(child: SvgPicture.asset(kMapPinIconSvg)),
                   hSizedBox0,
                   CustomText.ourText(
                     mockActivities.location,
@@ -58,11 +58,13 @@ Widget activityCardWidget({required MockActivitiesModel mockActivities}) {
                 spacing: 5,
                 children: List.generate(
                   mockActivities.tags.length,
-                  (index) => CustomTagContainer(
-                    text: mockActivities.tags[index].title,
-                    bgColor: mockActivities.tags[index].backgroundColor,
-                    icon: mockActivities.tags[index].icon,
-                    textColor: mockActivities.tags[index].textColor,
+                  (index) => Skeleton.shade(
+                    child: CustomTagContainer(
+                      text: mockActivities.tags[index].title,
+                      bgColor: mockActivities.tags[index].backgroundColor,
+                      icon: mockActivities.tags[index].icon,
+                      textColor: mockActivities.tags[index].textColor,
+                    ),
                   ),
                 ),
               ),

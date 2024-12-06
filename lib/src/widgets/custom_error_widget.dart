@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../core/app/colors.dart';
 import '../core/app/dimensions.dart';
 import '../core/app/texts.dart';
 import 'custom_button.dart';
@@ -54,7 +53,7 @@ class CustomErrorWidget extends StatelessWidget {
                     ontap ?? () {},
                     fontSize: 13,
                     fontWeight: FontWeight.w500,
-                    titleColor: AppColor.kPrimary600,
+                    titleColor: Colors.red,
                   ),
                 ),
               ],

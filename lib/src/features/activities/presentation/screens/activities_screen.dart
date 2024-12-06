@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:townsquare/src/core/app/colors.dart';
 import 'package:townsquare/src/core/app/dimensions.dart';
 import 'package:townsquare/src/core/app/medias.dart';
@@ -10,7 +11,10 @@ import 'package:townsquare/src/features/main/presentation/screens/main_screen.da
 import 'package:townsquare/src/helper/common_helper.dart';
 import 'package:townsquare/src/widgets/custom_button.dart';
 import 'package:townsquare/src/widgets/custom_circle_progress_indicator.dart';
+import 'package:townsquare/src/widgets/custom_dialogs.dart';
+import 'package:townsquare/src/widgets/custom_error_widget.dart';
 import 'package:townsquare/src/widgets/custom_network_image_widget.dart';
+import 'package:townsquare/src/widgets/custom_not_found_widget.dart';
 import 'package:townsquare/src/widgets/custom_text.dart';
 import 'package:townsquare/src/widgets/custom_vertical_dashed_divider.dart';
 

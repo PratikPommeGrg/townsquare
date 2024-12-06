@@ -24,3 +24,6 @@ List<String> activitiesFilterList = [
 ValueNotifier<List<MockActivitiesModel>> mockFilterActivities =
     ValueNotifier<List<MockActivitiesModel>>(List.from(mockActivities));
 ValueNotifier<String> selectedFilter = ValueNotifier<String>("All");
+
+ValueNotifier<bool> isLoading = ValueNotifier<bool>(false);
+ValueNotifier<bool> isFailure = ValueNotifier<bool>(false);

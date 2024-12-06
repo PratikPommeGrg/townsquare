@@ -114,7 +114,7 @@ List<MockActivitiesModel> mockActivities = [
         backgroundColor: AppColor.kChildCareTagColor,
       ),
     ],
-    categories: ["Sports", "Popular"], // Add corresponding categories
+    categories: ["Sports"], // Add corresponding categories
   ),
   MockActivitiesModel(
     title: "Standing Tapas Lunch",
@@ -156,32 +156,6 @@ List<MockActivitiesModel> mockActivities = [
         backgroundColor: AppColor.kWorkSpaceTagColor,
       ),
     ],
-    categories: ["Kids", "Creative"], // Add corresponding categories
-  ),
-  MockActivitiesModel(
-    title: "5-a-side Football",
-    time: "16:00",
-    duration: "(60 min)",
-    location: "Municipal Sports Center",
-    price: 19,
-    spot: 4,
-    tags: [
-      MockActivityTag(
-        title: "4 spots left",
-        textColor: AppColor.kNeutral500,
-        backgroundColor: AppColor.kNeutral200,
-      ),
-      MockActivityTag(
-        title: "high",
-        textColor: Colors.orange,
-        backgroundColor: AppColor.kHighIntensityTagColor,
-      ),
-      MockActivityTag(
-        title: "childcare",
-        textColor: Colors.green,
-        backgroundColor: AppColor.kChildCareTagColor,
-      ),
-    ],
-    categories: ["Sports", "Popular"], // Add corresponding categories
+    categories: ["Creative"], // Add corresponding categories
   ),
 ];
